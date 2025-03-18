@@ -1,0 +1,14 @@
+["BSTIterator", "next", "next", "hasNext", "next", "hasNext", "next", "hasNext", "next", "hasNext"]
+[[[7, 3, 15, null, null, 9, 20]], [], [], [], [], [], [], [], [], []]
+
+["BSTIterator","next","hasNext","next","hasNext","next","hasNext","next","hasNext"]
+[[[7,null,15,9,16]],[],[],[],[],[],[],[],[]]
+
+["BSTIterator","next","hasNext","next","hasNext","next","hasNext","next","hasNext"]
+[[[9,6,10,3,null,null,null]],[],[],[],[],[],[],[],[]]
+
+["BSTIterator","next","hasNext","next","hasNext","next","hasNext","next","hasNext","next","hasNext","next","hasNext","next","hasNext"]
+[[[8,5,10,3,6,9,12,1,null,null,7,null,null,11,null]],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+
+["BSTIterator","hasNext","next","hasNext"]
+[[[1]],[],[],[]]

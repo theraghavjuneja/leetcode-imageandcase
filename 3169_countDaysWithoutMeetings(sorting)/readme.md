@@ -86,6 +86,7 @@ meetings = [[1,5], [2,4], [6,9]]
   ```
 
 ---
+- Why update this way? so that it actually keep track of maximum day his meeting ended, because that will include whole interval you would have already counted
 
 #### Case 3: If `days > prevEnd`  
 - We **add `days - prevEnd`** to `count` to handle any remaining free days.

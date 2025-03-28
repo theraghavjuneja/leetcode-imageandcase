@@ -171,3 +171,6 @@ int main()
 
 ```
 ## so more or less code of vector or maps is same as we are pushing back u->v v->u
+
+- Path (nodes separated which means is there a path or not)
+- for instance 1 2 3 4 means 1->2 2->3 and 3->4 can be gone in that graph

@@ -135,13 +135,39 @@ The **Adjacency List** can be represented as
 ```cpp
 #include <iostream>
 #include <vector>
+#include<unordered_map>
 using namespace std;
-int main()
+void vectorUsing()
 {
   int n,m;
   //say n is the no of nodes, m is the no of edges
   cin>>n>>m;
-  vector<vector<int>>
+  vector<vector<int>>adjList(n); //creates a 2d vector with n rows, 0 cols initially
+  for(int i=0;i<m;i++){
+    int u,v; // take input of which 2 nodes are connected
+    cin>>u>>v;
+    adjList[u].push_back(v);
+    adjList[v].push_back(u);
+  }
+}
+void usingMaps(){
+  int n,m;
+  cin>>n>>m;
+  unordered_map<int,list<int>>adjList;
+  for(int i=0;i<m;i++){
+    int u,v; // take input of which 2 nodes are connected
+    cin>>u>>v;
+    adjList[u].push_back(v);
+    adjList[v].push_back(u);
+  }
+  
+
+}
+int main()
+{
+  
+
 }
 
 ```
+## so more or less code of vector or maps is same as we are pushing back u->v v->u

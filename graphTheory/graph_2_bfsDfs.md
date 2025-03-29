@@ -96,3 +96,59 @@ void bfs(int node,queue<int>&q,vector<vector<int>>&adj,vector<bool>&visited,vect
 ```
 
 - remember visited is used no matter all nodes are connected or one component is disconnected or not
+
+# Now I will do DFs traversal of a graph,
+- In dfs we go to any of neighboring nodes and will continue going to neighbor(for instance, we continue going to left nbr in a tree)
+```code
+    1
+   / \
+  2   3—4
+ / \  |  |
+5   6 7—8
+
+```
+### We will 
+- 1->2->5 Now return to 2
+- Now at 2, one nbr 5 has been processed so we go to 6 and so on..
+### calls may look like
+```code
+DFS(1)
+ ├── DFS(2)
+ │   ├── DFS(5)
+ │   ├── (Backtrack)
+ │   ├── DFS(6)
+ │   ├── (Backtrack)
+ │   ├── (Return to 1)
+ ├── DFS(3)
+ │   ├── DFS(7)
+ │   ├── DFS(8)
+ │   ├── DFS(4)
+ │   ├── (Backtrack to 1)
+ ├── (End)
+
+```
+## Since, we are moving in a particular direction, and ddoing stuff like backtracking, we might use  recursion etc
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+void dfs(int node,vector<bool>&visited,vector<vector<int>>&adj,vector<int>&answer){
+        visited[node]=true;
+        answer.push_back(node);
+        for(int nbr:adj[node]){
+            if(!visited[nbr]){
+                dfs(nbr,visited,adj,answer);
+            }
+        }
+    }
+    vector<int> DFS(vector<vector<int>>& adj) {
+        vector<bool>visited(adj.size(),false);
+        vector<int>answer;
+        dfs(0,visited,adj,answer); 
+        '''
+        The question only stated that I need to do dfs of all nodes connected to 0 and not the other nodes.
+        If there were other nodes, I would have to do the similar procedure
+        '''
+        return answer;
+    }
+``` 

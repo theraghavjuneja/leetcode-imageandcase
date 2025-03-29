@@ -1,4 +1,6 @@
+# LC 547
 ### Basics/ Theory
+
 - I need to find **number of provinces** or **number of connected components**. So that actually means each bfs call (total bfs calls isn't it). 
 - or no of dfs calls from main function only
 - so practically I can just declare a count variable that's it

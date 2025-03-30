@@ -124,3 +124,39 @@ int main() {
 
 
 ```
+# THE code thought process is same
+# if a neighbor is already visited and it's not parent 
+## **using DFS**
+- Now i will try doing the undirected graph cycle Detection using Depth First Search Method.
+```cpp
+bool dfs(int node,int parent,vector<bool>&visited,vector<vector<int>>&adj){
+        visited[node]=true;
+        for(int neighbor:adj[node]){
+            if(!visited[neighbor]){
+                if(dfs(neighbor,node,visited,adj)){
+                    return true;
+                }
+            }
+            else{
+                // if the node is not the parent
+                if(neighbor!=parent){
+                    // i.e. visited but not parent
+                    return true;
+                }
+            }
+        }
+        return false;
+        
+    }
+    bool isCycle(vector<vector<int>>& adj) {
+        vector<bool>visited(adj.size(),false);
+        for(int i=0;i<adj.size();i++){
+            if(!visited[i]){
+                if(dfs(i,-1,visited,adj)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+```

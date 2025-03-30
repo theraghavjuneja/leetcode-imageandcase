@@ -86,7 +86,6 @@ public:
             }
         }
         return count;
-
     }
     int numEnclaves(vector<vector<int>>& grid) {
         int n=grid.size();

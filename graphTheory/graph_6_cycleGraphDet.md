@@ -4,6 +4,7 @@
 
 ## **using BFS**
 - M1 : No of visited node>=2 in any adjList
+- M2: A cycle is detected if I visit a node that is already visited and it is not the **parent** of the current node.
 ```cpp
 #include <vector>
 #include <queue>
@@ -52,3 +53,74 @@ bool isCycle(vector<vector<int>>& adj) {
 ## Idk no one taught this method but for me this method passed all test casses in any coding editor
 - so acc to me why this works?
 - when we have >=2 visited nodes as neighbors. That means there is another way to reach these 2 except current node. so these 4 forms a cycle always
+
+## Method -2 
+- here I will try to use a parent node method
+```cpp
+#include <iostream>
+#include <vector>
+#include <queue>  // Include queue for BFS
+using namespace std;
+
+bool bfs(int node, vector<vector<int>>& adj, vector<bool>& visited, vector<int>& parent) {
+    queue<int> q;
+    q.push(node);
+    visited[node] = true;
+    parent[node] = -1;   // I ALWAYS FORGOT THIS CONDITION
+
+    while (!q.empty()) {
+        int top = q.front();
+        q.pop();
+
+        for (int elem : adj[top]) {
+            if (!visited[elem]) {
+                visited[elem] = true;
+                q.push(elem);
+                parent[elem] = top; 
+            } 
+            else if (parent[top] != elem) {  
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool isCycle(vector<vector<int>>& adj) {
+    vector<bool> visited(adj.size(), false);
+    vector<int> parent(adj.size(), -1);
+
+    for (int i = 0; i < adj.size(); i++) {
+        if (!visited[i]) {
+            if (bfs(i, adj, visited, parent)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+
+int main() {
+    int n, m;
+    cin >> n >> m; 
+    vector<vector<int>> adj(n);
+    
+    for (int i = 0; i < m; i++) {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u); 
+    }
+
+    if (isCycle(adj)) {
+        cout << "Cycle detected\n";
+    } else {
+        cout << "No cycle\n";
+    }
+
+    return 0;
+}
+
+
+```

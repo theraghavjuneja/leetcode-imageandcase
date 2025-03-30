@@ -125,7 +125,7 @@ int main() {
 
 ```
 # THE code thought process is same
-# if a neighbor is already visited and it's not parent 
+# if a neighbor is already visited and it's not parent of current node that actually means there is a presence of cycle
 ## **using DFS**
 - Now i will try doing the undirected graph cycle Detection using Depth First Search Method.
 ```cpp

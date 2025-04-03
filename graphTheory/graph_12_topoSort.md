@@ -80,14 +80,16 @@ vector<int>topologicalSort(vector<vector<int>>&adjList){
 #include<vector>
 #include <queue>
 using namespace std;
+// tsort O(E) across all calls
+// overall whole function O(V+E)
 void tSort(int node,
 queue<int>&q,
 vector<bool>&visited,
 vector<int>&indegree,
 vector<vector<int>>&adj){
-    visited[node]=true;
+    visited[node]=true; //O(1)
     q.push(node);
-    for(int neighbor:adj[node]){
+    for(int neighbor:adj[node]){ //go to alladj Nodes
         if(!visited[neighbor]){
             indegree[neighbor]--;
             if(indegree[neighbor]==0){
@@ -101,19 +103,22 @@ vector<int>topoSort(vector<vector<int>>&adj){
     // adj list might look something like
     // 0->{}, 1->{},2->3 ,4->0,1 5->0,2
     // aim to find indegree of each node
-    vector<int>indegree(adj.size(),0); //number of incoming nodes
-    vector<bool>visited(adj.size(),false);
+    vector<int>indegree(adj.size(),0); //O(V)
+    vector<bool>visited(adj.size(),false); //O(V)
     for(int i=0;i<adj.size();i++){ // O(V) -> visiting all vertices
         for(int j:adj[i]){ //O(E) overall O(V+E) 
             indegree[j]++;
         }
     }
     queue<int>q;
+    // Runs for O(V)
     for(int i=0;i<adj.size();i++){
         if(!visited[i]&&indegree[i]==0){
+            // only called once when indegree=0
             tSort(i,q,visited,indegree,adj);
         }
     }
+
     vector<int>ans;
     while (!q.empty()) {
         ans.push_back(q.front());

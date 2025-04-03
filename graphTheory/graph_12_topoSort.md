@@ -1,4 +1,5 @@
-## TOPOlOGICal SORT
+# TOPOlOGICal SORT( ONLY FOR DIRECTED ACYLIC GRAPH)
+## METHOD 1 DFS & STACK (Push to stack while btrking)
 - Okay so basically let's say I have a graph,
 - TS says , linear ordering such that for every edge u-v , u appear before v in topological sort
 ### I forgot this (Key points)
@@ -54,4 +55,72 @@ vector<int>topologicalSort(vector<vector<int>>&adjList){
 ## APPROACH -2 KAHN'S ALGORITHM OR BFS
 - Kahn's algorithm is a topological sorting algo based on BFs(Breadth First Search)
 - Also used for detecting the cycle as if graph contains a cycle, topological sort will fail to process all nodes
-- 
+
+### Concept Involved
+- **Indegree** : In a directed graph, for a node number of nodes pointing to the node means the indegree
+- **OutDegree**: No of nodes coming out of a node is the outdegree
+
+### Intituion:
+- Okay, so what we saw is in simple dfs method or simple Topological sort the ordering was 5 4 2 3 1 0 (last ques)
+- what is clear here ? 0,1 are nodes with indegree 2, 2,3 are nodes with indegree 1 and 5,4 have indegree 0. from here we get the intution of  indegree thing
+
+### So let's consider prev graph only
+- Initial indegrees [2,2,1,1,0,0] 
+- node 0 indegree 2, node 1 indegree 2 and so on...
+- Push nodes with 0 indegree i.e.5 and 6 into queue
+- process neighbors, and decrease their indegree. So indegree node 2 and 0 becomes 0
+- similarly push 0 & 2 process their neighbors and so on.
+```
+5->0<-4
+|     |
+2->3->1
+```
+```cpp
+#include<iostream>
+#include<vector>
+#include <queue>
+using namespace std;
+void tSort(int node,
+queue<int>&q,
+vector<bool>&visited,
+vector<int>&indegree,
+vector<vector<int>>&adj){
+    visited[node]=true;
+    q.push(node);
+    for(int neighbor:adj[node]){
+        if(!visited[neighbor]){
+            indegree[neighbor]--;
+            if(indegree[neighbor]==0){
+                q.push(neighbor);
+                visited[neighbor]=true;
+            }
+        }
+    }
+}
+vector<int>topoSort(vector<vector<int>>&adj){
+    // adj list might look something like
+    // 0->{}, 1->{},2->3 ,4->0,1 5->0,2
+    // aim to find indegree of each node
+    vector<int>indegree(adj.size(),0); //number of incoming nodes
+    vector<bool>visited(adj.size(),false);
+    for(int i=0;i<adj.size();i++){ // O(V) -> visiting all vertices
+        for(int j:adj[i]){ //O(E) overall O(V+E) 
+            indegree[j]++;
+        }
+    }
+    queue<int>q;
+    for(int i=0;i<adj.size();i++){
+        if(!visited[i]&&indegree[i]==0){
+            tSort(i,q,visited,indegree,adj);
+        }
+    }
+    vector<int>ans;
+    while (!q.empty()) {
+        ans.push_back(q.front());
+        q.pop();
+    }
+    return ans;
+}
+
+
+```

@@ -1,5 +1,6 @@
 # TOPOlOGICal SORT( ONLY FOR DIRECTED ACYLIC GRAPH)
 ## METHOD 1 DFS & STACK (Push to stack while btrking)
+#### Important Point: If no node has indegree 0, that means there is a cycle in the graph. I fthere is a cycle that means it is not possible to do the topological sort
 - Okay so basically let's say I have a graph,
 - TS says , linear ordering such that for every edge u-v , u appear before v in topological sort
 ### I forgot this (Key points)
@@ -80,51 +81,52 @@ vector<int>topologicalSort(vector<vector<int>>&adjList){
 #include<vector>
 #include <queue>
 using namespace std;
-// tsort O(E) across all calls
-// overall whole function O(V+E)
-void tSort(int node,
-queue<int>&q,
-vector<bool>&visited,
-vector<int>&indegree,
-vector<vector<int>>&adj){
-    visited[node]=true; //O(1)
-    q.push(node);
-    for(int neighbor:adj[node]){ //go to alladj Nodes
-        if(!visited[neighbor]){
-            indegree[neighbor]--;
-            if(indegree[neighbor]==0){
-                q.push(neighbor);
-                visited[neighbor]=true;
-            }
-        }
-    }
-}
-vector<int>topoSort(vector<vector<int>>&adj){
-    // adj list might look something like
-    // 0->{}, 1->{},2->3 ,4->0,1 5->0,2
-    // aim to find indegree of each node
-    vector<int>indegree(adj.size(),0); //O(V)
-    vector<bool>visited(adj.size(),false); //O(V)
-    for(int i=0;i<adj.size();i++){ // O(V) -> visiting all vertices
-        for(int j:adj[i]){ //O(E) overall O(V+E) 
-            indegree[j]++;
-        }
-    }
-    queue<int>q;
-    // Runs for O(V)
-    for(int i=0;i<adj.size();i++){
-        if(!visited[i]&&indegree[i]==0){
-            // only called once when indegree=0
-            tSort(i,q,visited,indegree,adj);
+vector<int> kahnTopologicalSort(vector<vector<int>>& adj) {
+    int n = adj.size();
+    vector<int> indegree(n, 0);
+    vector<int> topoOrder;
+    // visiited not needed
+    // Compute indegree of each node
+    for (int i = 0; i < n; i++) {
+        for (int neighbor : adj[i]) {
+            indegree[neighbor]++;
         }
     }
 
-    vector<int>ans;
-    while (!q.empty()) {
-        ans.push_back(q.front());
-        q.pop();
+    queue<int> q;
+
+    // Add all nodes with indegree 0
+    for (int i = 0; i < n; i++) {
+        if (indegree[i] == 0) {
+            q.push(i);
+        }
     }
-    return ans;
+
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        topoOrder.push_back(node);
+
+        // Reduce indegree of neighbors
+        for (int neighbor : adj[node]) {
+            indegree[neighbor]--;
+            // visited not needed 
+            // Reason: 0 indegree initial nodes pushed aab wo nodes dobara nahi aayegi as kisi ka neighbor so visited not needed
+            if (indegree[neighbor] == 0) {
+                q.push(neighbor);
+            }
+        }
+    }
+
+    // If the number of nodes in topoOrder is less than total nodes, a cycle exists
+    // Reason: due to cycle, at a point there will be no nodes with 0 indegree, so processing will stop
+    if (topoOrder.size() < n) {
+        cout << "Cycle detected! Topological sorting is not possible.\n";
+        return {};
+    }
+
+    return topoOrder;
+}
 }
 
 

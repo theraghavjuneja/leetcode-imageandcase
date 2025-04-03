@@ -50,3 +50,8 @@ vector<int>topologicalSort(vector<vector<int>>&adjList){
 
 }
 ```
+
+## APPROACH -2 KAHN'S ALGORITHM OR BFS
+- Kahn's algorithm is a topological sorting algo based on BFs(Breadth First Search)
+- Also used for detecting the cycle as if graph contains a cycle, topological sort will fail to process all nodes
+- 

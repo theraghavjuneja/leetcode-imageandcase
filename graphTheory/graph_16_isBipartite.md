@@ -46,3 +46,40 @@ public:
     }
 };
 ```
+
+### DFS 
+```cpp
+class Solution {
+public:
+    bool dfs(int node,int currentColor,vector<int>&colors,vector<vector<int>>&graph){
+        colors[node]=currentColor;
+        for(int neighbor:graph[node]){
+            if(colors[neighbor]==-1){
+                // meaning it is not visited
+                if(!dfs(neighbor,!currentColor,colors,graph)){
+                    return false; // not biparitie
+                }
+                
+            }
+            else{
+                // already visited , check color
+                if (currentColor==colors[neighbor]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    bool isBipartite(vector<vector<int>>& graph) {
+        vector<int>colors(graph.size(),-1); //-1 means unvisited and no color
+        for(int i=0;i<graph.size();i++){
+            if(colors[i]==-1){
+                if(!dfs(i,0,colors,graph)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+};
+```

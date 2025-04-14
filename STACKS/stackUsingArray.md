@@ -106,4 +106,66 @@ sizeof(arr);
 Keep in mind this returns the size of the pointer, not the allocated array size.(as remember arr is actually a pointer to arr[0]);
 
 #### Another Note
-- Maybe I could have also used something like int *arr=new int[500]; just while declaration
+- Maybe I could have also used something like int *arr=new int[500]; just while declaration, that would be another method got it>
+```cpp
+#include<iostream>
+using namespace std;
+
+class Stack {
+    public:
+    int* arr;
+    int top;
+    int capacity;
+    Stack(int initialSize=2){
+        capacity=initialSize;
+        arr=new int[capacity];
+        top=-1;
+    }
+    void resize(){
+        /* This method resizes array to double the size
+        1.) Declare a new array of double size, copy elements from original array
+        2.) Delete origina
+        3.) Again original=new
+        */
+
+        int newCapacity = capacity * 2;
+        int* newArr = new int[newCapacity];
+        for (int i = 0; i <= top; i++) {
+            newArr[i] = arr[i];
+        }
+        delete[] arr;
+        arr = newArr;
+        capacity = newCapacity;
+        cout << "Stack resized to capacity: " << capacity << endl;
+    }
+    void push(int element){
+        if(top==capacity-1){
+            // asume capacity=2, top=1 , top=1 means 2 elements at index 0 & index1
+            resize();
+        }
+        arr[++top] = element;
+    }
+     void pop() {
+        if (isEmpty()) {
+            cout << "Stack underflow on pop" << endl;
+            return;
+        }
+        top--;
+    }
+    int peek() {
+        if (isEmpty()) {
+            cout << "Stack underflow on peek" << endl;
+            return -1;
+        }
+        return arr[top];
+    }
+    int size() {
+        return top + 1;
+    }
+
+    ~Stack() {
+        delete[] arr;
+    }
+};
+
+```

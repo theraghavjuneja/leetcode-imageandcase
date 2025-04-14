@@ -84,6 +84,14 @@ class Stack{
     ~Stack(){
         delete [] arr;
     }
+    int main(){
+        Stack s; //normal declaration
+        // Stack *s=new Stack(); //heap declaration
+        //if this had parameeter, we could have used
+        // Stack s(42);
+        // or Stack *s=new Stack(42);
+        s.push(10);
+    }
 };
 ```
 
@@ -169,3 +177,7 @@ class Stack {
 };
 
 ```
+
+
+### Dynamic object ClassName* varName remember this
+### ClassName*=type

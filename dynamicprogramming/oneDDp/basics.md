@@ -154,3 +154,7 @@ int main() {
 
 Would you also like me to make a small diagram showing the recursion tree (how `fibonacci(5)` splits into `fibonacci(4)` and `fibonacci(3)` etc)? 📈  
 It can make understanding memoization even clearer!
+
+#### Types of Problems that I encountered throughout
+- Distinct Ways: I added up all the ways . dp[0]+dp[1], dp[1]+dp[2] to build final soln(Example problem 70 climbing stairs)
+- Min Cost: So here, if we go out of bounds we will return a very large no to ephasize that we should not take this path. Else we will always do the min of all paths one can encoutner

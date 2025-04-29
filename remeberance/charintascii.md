@@ -26,3 +26,19 @@ char ch=num+'0' //ascii of 0 added
 ```
 <!-- remember '1'-'0'=1 -->
 <!-- subtraction in char is just unka ascii subt -->
+
+
+### now how to convert char to ascii and vice versa
+- example 'a' to 97 (its ascii)
+```cpp
+char ch='a';
+int ascii=ch;
+//thats all we needed
+
+```
+<!-- 59 to ascii -->
+```cpp
+int num=59;
+char ch=static_cast<char>(num);
+
+```

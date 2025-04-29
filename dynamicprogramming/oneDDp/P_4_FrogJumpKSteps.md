@@ -18,3 +18,23 @@ int memoizedSolution(int index,vector<int>&cost,vector<int>&dp,int k)
 
     }
 ```
+#### so i can then just directly convert this solution to tabulation
+```cpp
+ int tabulation(int n, int k, vector<int> &height){
+        vector<int>dp(height.size(),-1);
+        dp[0]=0;
+        for(int i=1;i<height.size();i++){
+            int CostToComeFromIndexJ=INT_MAX;
+            // now for each i can go to k steps bakc
+            for(int j=i-k;j<i;j++){
+                if(j>=0)
+                {
+                    CostToComeFromIndexJ=min(CostToComeFromIndexJ,dp[j]+abs(height[i]-height[j]));
+                }
+                
+            }
+            dp[i]=CostToComeFromIndexJ;
+        }
+        return dp[n-1];
+ }
+ ```

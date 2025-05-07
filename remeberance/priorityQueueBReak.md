@@ -44,3 +44,10 @@ You're telling `priority_queue`:
 You **must provide all three** if you're changing the default comparator. So no, you can't skip `vector<int>` unless you're okay with the **default max-heap**.
 
 Let me know if you want to do this with a `struct` or `pair`, too — that gets even more fun �
+
+#### I got a very new way of how to use it
+```cpp
+using T = pair<int, pair<int, int>>;
+priority_queue<T, vector<T>, greater<T>> minHeap;
+// so instead of writing again and again i can do this
+```

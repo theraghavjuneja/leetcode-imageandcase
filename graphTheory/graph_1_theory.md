@@ -72,7 +72,7 @@ The **Adjacency Matrix** representation would be:
 4  [0, 1, 1, 0]
 ```
 - > We dont write an edge between 1 & 1, i.e. same nodes no edge until there is a self -loop so that's understandable
-
+- > Although, a n*n matrix would work but n+1*n+1 is better since nodes are starting from 1 so i can directly do adj[u][v] else i would need to do adj[u-1][v-1]
 ### C++ Code Implementation
 ```cpp
 #include <iostream>
@@ -107,7 +107,7 @@ int main() {
 ```
 
 ### Complexity Analysis
-- **Time Complexity**: `O(m)`, where `m` is the number of edges (for inserting edges).
+- **Time Complexity**: `O(n^2)`, we declaring a n*n matrix (thats o(n^2)).
 - **Space Complexity**: `O(n^2)`, as we store `n × n` matrix elements 
 
 Adjacency matrices are useful for **dense graphs** but become inefficient for **sparse graphs** due to high space consumption.

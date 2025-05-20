@@ -1,5 +1,6 @@
 #### Okay so I am climbing a staircase. It takes me n steps to reach the top. (I took 1 or 2 step each time)
 #### Problem says to find total ways to reach the top
+![climb](dp_1_climbStair.jpg)
 - Imagine i am at stair 1, I can go to 2 or 3. Then 2 also I can go to 3 or 4 and so on.. So after climbing each stair I have 2 options and so on it goes like. Each of this become a separate sub-problem. (This is how it works).
 - Okay so there are all this separate sub-problems. So , each sub-prob-> Recursion . So i will start with recursion
 - recursion means topDown. 

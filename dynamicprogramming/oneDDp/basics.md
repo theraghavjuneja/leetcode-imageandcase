@@ -160,3 +160,6 @@ It can make understanding memoization even clearer!
 - Min Cost: So here, if we go out of bounds we will return a very large no to ephasize that we should not take this path. Else we will always do the min of all paths one can encoutner
 - Min Cost with Sum : In some questions instead of only considering minCost, we need to apply some operations too . (such as taking current element etc.) for example, in frog jumps etc. it was accessing cost array and prev elements too 
 - Now take, not Take(Example House robber). I can't go into adjacent things so we do take not-tak approach
+
+
+- currently left problems, cherry pickup 1 & cherry pickup 2

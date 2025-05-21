@@ -3,7 +3,7 @@
 - If you get out of the bounds return 1e9 to emphasisze this is a very high cost
 - else return the min of all paths available to you....
 - this is all we need to do
-
+![cost](2_costClimbStair.jpg)
 #### Okay so problem explanation
 - Imagine we are travelling in array. We can start from index 0 or index 1. Now at each instance i can jump 1 or 2 step. But before jumping i need to pay cost equavilane to the cost[i]. then i can jump either 1 or 2 steps that depend on me. 
 - okay so let's say that I consider the given array

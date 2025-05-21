@@ -2,6 +2,7 @@
 - took me some time to solve so i will start with a wrong approach first of all
 - okay so there is a frog at index 0 he needs to reach last index of the stair case. Now for reaching the last index, he can take either 1 or 2 steps in each case.  But catch is for taking each step. Imagine he jump from stair 0 to stair 2. He will spend energy abs(stair2 val-stair 0 val) to jump so we need to sum up all the anergy required
 - okay so again I can start from last stair (n) and can construct solution (this is recursion/ top-Down/memoization)
+![image](3,4_frogJumo.jpg)
 ```cpp
 int memoizedSolution(int index,vector<int>&cost,vector<int>&dp)
     {

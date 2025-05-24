@@ -2,7 +2,9 @@
 #### Will right both correct & wrong approach
 ### Correct
 - 1. Exclude the last house and include the first
+
 - 2. Exclude the first house and include the last 
+![img](5,6_robber.jpg)
 ### And we will take maximu. Exclude here means the last house wont be taken. (Doesnt mean that i will necerrarily take first, say 2+4+6 (7 last)) gave me better than 1+3+5 etc. so i will take that
 
 - this is a general statement that exlude last, include first & vice versa. then check which is giving max answer

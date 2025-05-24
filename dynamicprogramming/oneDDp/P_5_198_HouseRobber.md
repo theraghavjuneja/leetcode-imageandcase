@@ -1,4 +1,5 @@
 ### Okay so let us try to understand the problem statement first.
+![img](5,6_robber.jpg)
 - I am a professional rober. And I need to rob the maximum money out (ofcourse since I am a robber). Now given an array which represents the loot present in each house, what I need to do is
 - > I need to rob houses with constraint that I cant rob adjacent houses. So for any of you who don't know this is a very traditional DP problem (or recursion) which says take the element or not take the element. i.e. take the house or not take the house
 - this is what I need either I will take(if i didnt take previous, or I wont)

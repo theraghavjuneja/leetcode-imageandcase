@@ -1,6 +1,8 @@
 ## Ninja's Training
 ##### Problem Statement
 #### Okay so we have a ninja who is planning 'N' days long schedule. Each day he can perform either A1,A2 or A3. He can't do the same activity on 2 conesuctive days.. Each day on doing activity, he is given with some points. Think of max points he can earn
+![img](7_ninja.jpg)
+![img](7_ninja_2.jpg)
 - okay so first of all I am given a 2-D array  of N*3 points
 ```code
    A0   A1   A2

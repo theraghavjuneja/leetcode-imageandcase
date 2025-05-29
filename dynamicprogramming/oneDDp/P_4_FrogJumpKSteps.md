@@ -1,4 +1,5 @@
 ### so this is the modified version of frog jump . Just I can take k jumps at a time. Remember that
+![image](3,4_frogJumo.jpg)
 ```cpp
 int memoizedSolution(int index,vector<int>&cost,vector<int>&dp,int k)
     {
